@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  producerservice:
+    image: ${DOCKER_REGISTRY-}producerservice
+    build:
+      context: .
+      dockerfile: ProducerService/Dockerfile
+
+  consumerservice:
+    image: ${DOCKER_REGISTRY-}consumerservice
+    build:
+      context: .
+      dockerfile: ConsumerService/Dockerfile
+
+  postgresDb:
+    image: postgres
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "A@12345"
+      POSTGRES_DB: "MessagesDb"
+    ports:
+      - "5432:5432"
+
+  sqlserverDb:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      SA_PASSWORD: "A@12345"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+
