@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProducerService", "ProducerService\ProducerService.csproj", "{62D6EC80-BE9C-46E6-84CE-FB0909A7691A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProducerService", "ProducerService\ProducerService.csproj", "{62D6EC80-BE9C-46E6-84CE-FB0909A7691A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumerService", "ConsumerService\ConsumerService.csproj", "{322C0806-C647-4B98-BACB-E17ECB1F885C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumerService", "ConsumerService\ConsumerService.csproj", "{322C0806-C647-4B98-BACB-E17ECB1F885C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FC648898-2319-45EA-86FF-9A42FFA92899}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseRabbitMQ", "..\UseRabbitMQ\UseRabbitMQ.csproj", "{E8F0D3AB-A9F2-4F17-86AF-04ECA6722B4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseKafka", "..\UseKafka\UseKafka.csproj", "{5F9C74F7-523B-46E5-8C1A-8885B2E418FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{FC648898-2319-45EA-86FF-9A42FFA92899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC648898-2319-45EA-86FF-9A42FFA92899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC648898-2319-45EA-86FF-9A42FFA92899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8F0D3AB-A9F2-4F17-86AF-04ECA6722B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8F0D3AB-A9F2-4F17-86AF-04ECA6722B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8F0D3AB-A9F2-4F17-86AF-04ECA6722B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8F0D3AB-A9F2-4F17-86AF-04ECA6722B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9C74F7-523B-46E5-8C1A-8885B2E418FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9C74F7-523B-46E5-8C1A-8885B2E418FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9C74F7-523B-46E5-8C1A-8885B2E418FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9C74F7-523B-46E5-8C1A-8885B2E418FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,19 +15,18 @@ services:
 
   postgresDb:
     image: postgres
-    environment:
-      POSTGRES_USER: "user"
-      POSTGRES_PASSWORD: "A@12345"
-      POSTGRES_DB: "MessagesDb"
-    ports:
-      - "5432:5432"
 
   sqlserverDb:
     image: mcr.microsoft.com/mssql/server
-    environment:
-      SA_PASSWORD: "A@12345"
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "Express"
-    ports:
-      - "1433:1433"
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+
+  kafka:
+    image: wurstmeister/kafka
+
+
 

@@ -2,8 +2,10 @@ version: '3.4'
 
 services:
   producerservice:
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:DefaultConnection=Server=sqlserverDb;Database=MessagesDb;User Id=sa;Password=Aa@12345678"
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
       - "80"
@@ -11,13 +13,64 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - sqlserverDb
+    command: ["dotnet", "run", "--", "migrate"]
+
   consumerservice:
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - "ConnectionStrings:DefaultConnection=Host=postgresDb;Database=consumerdb;Username=user;Password=A@12345"
+      - ASPNETCORE_URLS=https://+:8443;http://+:8980
     ports:
-      - "80"
-      - "443"
+      - "8980"
+      - "8443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on :
+      - postgresDb
+    command: ["dotnet", "run", "--", "migrate"]
+
+
+  sqlserverDb:
+    container_name: sqlserverDb
+    environment:
+      SA_PASSWORD: "Aa@12345678"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "6433:1433"
+
+  postgresDb:
+    container_name: postgresDb
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "A@12345"
+      POSTGRES_DB: "consumerdb"
+    ports:
+      - "5432:5432"
+
+  rabbitmq:
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # RabbitMQ server
+      - "15672:15672" # Management console
+
+
+  #zookeeper:
+  #  container_name: zookeeper
+  #  ports:
+  #    - "2181:2181"
+  #kafka:
+  #  container_name: kafka
+  #  ports:
+  #    - "9092:9092"
+  #  environment:
+  #    KAFKA_ADVERTISED_HOST_NAME: localhost
+  #    KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #  volumes:
+  #    - /var/run/docker.sock:/var/run/docker.sock
+
+
+
