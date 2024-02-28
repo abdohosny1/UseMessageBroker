@@ -19,6 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 //use kafka
 // Kafka Publisher and Consumer Configuration
 var kafkaBootstrapServers = builder.Configuration["Kafka:BootstrapServers"];
